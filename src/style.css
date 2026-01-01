@@ -1,96 +1,371 @@
+/* PANDORICA INSTITUTIONAL DESIGN SYSTEM
+   THEME: INFINITY SPACE REVEAL
+*/
+
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    --black-base: #000000;
+    --cube-blue: #0033ff;
+    --white-pure: #ffffff;
+    --text-muted: rgba(255, 255, 255, 0.6);
+    --border-soft: rgba(255, 255, 255, 0.1);
+    --glass-bg: rgba(255, 255, 255, 0.02);
+    --transition-speed: 0.6s;
+    --cubic-ease: cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+* {
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
 }
 
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100%;
+    background: 
+        radial-gradient(1px 1px at 10% 20%, white, transparent),
+        radial-gradient(1px 1px at 85% 15%, white, transparent),
+        radial-gradient(1px 1px at 30% 80%, white, transparent),
+        radial-gradient(1px 1px at 70% 60%, white, transparent),
+        radial-gradient(2px 2px at 50% 40%, white, transparent),
+        radial-gradient(1px 1px at 90% 85%, white, transparent),
+        radial-gradient(1px 1px at 20% 50%, white, transparent),
+        radial-gradient(1px 1px at 60% 10%, white, transparent),
+        radial-gradient(1px 1px at 40% 90%, white, transparent),
+        radial-gradient(2px 2px at 15% 70%, white, transparent),
+        radial-gradient(1px 1px at 75% 30%, white, transparent),
+        radial-gradient(1px 1px at 95% 50%, white, transparent),
+        radial-gradient(1px 1px at 25% 35%, white, transparent),
+        radial-gradient(1px 1px at 80% 75%, white, transparent),
+        radial-gradient(2px 2px at 45% 65%, white, transparent),
+        radial-gradient(1px 1px at 5% 45%, white, transparent),
+        radial-gradient(1px 1px at 65% 88%, white, transparent),
+        radial-gradient(1px 1px at 35% 12%, white, transparent),
+        radial-gradient(1px 1px at 88% 40%, white, transparent),
+        radial-gradient(1px 1px at 12% 95%, white, transparent),
+        #0a1f35;
+    background-size: 100% 100%;
+    color: var(--white-pure);
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+/* UNIFIED BACKGROUND - NO SEPARATE LAYER */
+.fixed-environment-layer {
+    display: none;
 }
 
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+.master-scroll-container {
+    position: relative;
+    width: 100%;
+    z-index: 1;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vanilla:hover {
-  filter: drop-shadow(0 0 2em #f7df1eaa);
+/* SCROLL ARCHITECTURE */
+.cinematic-gate {
+    height: 200vh;
+    width: 100%;
+    position: relative;
 }
 
-.card {
-  padding: 2em;
+.sticky-viewport {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
 }
 
-.read-the-docs {
-  color: #888;
+/* THE CUBE - CLEAN, NO MASK */
+.hero-image-wrapper {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: cubeDeepDissolve linear forwards;
+    animation-timeline: view();
+    animation-range: exit 0% exit 100%;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+.center-piece-cube {
+    width: 100%;
+    max-width: 800px;
+    height: auto;
+    object-fit: contain;
+    z-index: 2;
+    filter: drop-shadow(0 0 100px rgba(0, 200, 255, 0.5));
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+.atmospheric-overlay {
+    display: none;
+}
+
+@keyframes cubeDeepDissolve {
+    to { 
+        opacity: 0; 
+        transform: scale(1.15) translateY(-50px); 
+        filter: blur(50px) brightness(0.2);
+    }
+}
+
+/* TEXT REVEAL STYLING */
+.statement-reveal-group {
+    text-align: center;
+    max-width: 900px;
+    padding: 0 20px;
+    animation: textRevealFade linear forwards;
+    animation-timeline: view();
+    animation-range: entry 0% exit 100%;
+}
+
+.institutional-tag {
+    font-size: 0.8rem;
+    letter-spacing: 0.5em;
+    color: var(--cube-blue);
+    font-weight: 700;
+    display: block;
+    margin-bottom: 20px;
+}
+
+.main-announcement {
+    font-size: clamp(2.5rem, 10vw, 6rem);
+    font-weight: 900;
+    margin: 0;
+    letter-spacing: -3px;
+    line-height: 0.9;
+}
+
+.announcement-divider {
+    width: 60px;
+    height: 4px;
+    background: var(--white-pure);
+    margin: 40px auto;
+}
+
+.announcement-sub {
+    font-size: 1.2rem;
+    font-weight: 300;
+    max-width: 500px;
+    margin: 0 auto;
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+@keyframes textRevealFade {
+    0% { opacity: 0; transform: translateY(100px); filter: blur(20px); }
+    40%, 60% { opacity: 1; transform: translateY(0); filter: blur(0); }
+    100% { opacity: 0; transform: translateY(-100px); filter: blur(20px); }
+}
+
+/* NAVIGATION HUB STYLING */
+.nav-hub-content {
+    width: 100%;
+    max-width: 1000px;
+    padding: 0 40px;
+}
+
+.nav-header {
+    text-align: center;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.4em;
+    margin-bottom: 60px;
+    opacity: 0.6;
+}
+
+.institutional-nav {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.mega-nav-btn {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: white;
+    padding: 40px;
+    border: 1px solid var(--border-soft);
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    transition: all var(--transition-speed) var(--cubic-ease);
+}
+
+.mega-nav-btn:hover {
+    background: var(--white-pure);
+    color: var(--black-base);
+    transform: translateY(-10px);
+    border-color: var(--white-pure);
+}
+
+.btn-number {
+    font-size: 0.8rem;
+    font-weight: 900;
+    margin-bottom: 20px;
+    opacity: 0.4;
+}
+
+.btn-text {
+    font-size: 2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.btn-desc {
+    font-size: 0.9rem;
+    opacity: 0.6;
+}
+
+/* FOOTER ARCHITECTURE */
+.system-footer {
+    padding: 60px 40px;
+    border-top: 1px solid var(--border-soft);
+    margin-top: -100vh;
+    position: relative;
+    z-index: 10;
+}
+
+.footer-inner {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    opacity: 0.4;
+}
+
+/* ===========================
+   SUBPAGE STYLES
+   =========================== */
+
+.subpage-content-wrapper { 
+    padding: 100px 50px; 
+    display: flex; 
+    flex-direction: column; 
+    min-height: 100vh;
+    position: relative;
+    z-index: 1;
+}
+
+.subpage-header {
+    margin-bottom: 60px;
+}
+
+.back-link { 
+    color: white; 
+    text-decoration: none; 
+    font-size: 0.7rem; 
+    letter-spacing: 0.2em; 
+    border-bottom: 1px solid rgba(255,255,255,0.2); 
+    padding-bottom: 10px;
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+.back-link:hover {
+    border-bottom-color: var(--cube-blue);
+    color: var(--cube-blue);
+}
+
+.subpage-body { 
+    flex-grow: 1; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+}
+
+.mission-statement-card { 
+    max-width: 800px; 
+    background: rgba(0,0,0,0.5); 
+    backdrop-filter: blur(20px); 
+    padding: 80px; 
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.protocol-id { 
+    color: #0033ff; 
+    font-weight: 800; 
+    font-size: 0.8rem; 
+    letter-spacing: 0.3em; 
+    margin-bottom: 30px; 
+    display: block; 
+}
+
+.subpage-title { 
+    font-size: 4rem; 
+    margin: 0 0 40px 0; 
+    font-weight: 900; 
+    letter-spacing: -2px; 
+}
+
+.text-block p { 
+    font-size: 1.4rem; 
+    line-height: 1.8; 
+    opacity: 0.8; 
+    margin-bottom: 30px; 
+}
+
+/* TIMELINE PAGE SPECIFIC */
+.subpage-wrapper {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 100px 50px;
+}
+
+.subpage-container {
+    max-width: 900px;
+    width: 100%;
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(20px);
+    padding: 80px;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.main-heading {
+    font-size: 4rem;
+    font-weight: 900;
+    letter-spacing: -2px;
+    margin: 40px 0 60px 0;
+}
+
+.subpage-container h3 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--cube-blue);
+    margin-bottom: 15px;
+    letter-spacing: 0.1em;
+}
+
+.subpage-container p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    opacity: 0.8;
+    margin-bottom: 40px;
+}
+
+/* RESPONSIVE ADJUSTMENTS */
+@media (max-width: 768px) {
+    .institutional-nav {
+        grid-template-columns: 1fr;
+    }
+    
+    .mission-statement-card,
+    .subpage-container {
+        padding: 40px;
+    }
+    
+    .subpage-title,
+    .main-heading {
+        font-size: 2.5rem;
+    }
 }
