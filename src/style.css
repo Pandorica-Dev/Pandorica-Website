@@ -64,9 +64,22 @@ body, html {
 
 /* SCROLL ARCHITECTURE */
 .cinematic-gate {
-    height: 200vh;
+    height: 140vh;
     width: 100%;
     position: relative;
+}
+
+/* TIGHTER PACING PER SECTION (Apple-like: intentional, not endless) */
+.first-gate {
+    height: 155vh;
+}
+
+.text-gate {
+    height: 130vh;
+}
+
+.navigation-gate {
+    height: 125vh;
 }
 
 .sticky-viewport {
