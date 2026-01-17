@@ -1,14 +1,21 @@
 /* PANDORICA INSTITUTIONAL DESIGN SYSTEM
-   THEME: INFINITY SPACE REVEAL
+   Polished pacing + responsive layout (Commercial / Apple-like)
 */
 
 :root {
     --black-base: #000000;
-    --cube-blue: #0033ff;
+    --cube-blue: #2f6bff;
     --white-pure: #ffffff;
-    --text-muted: rgba(255, 255, 255, 0.6);
-    --border-soft: rgba(255, 255, 255, 0.1);
-    --glass-bg: rgba(255, 255, 255, 0.02);
+
+    --text-muted: rgba(255, 255, 255, 0.68);
+    --text-muted-2: rgba(255, 255, 255, 0.52);
+
+    --border-soft: rgba(255, 255, 255, 0.12);
+    --glass-bg: rgba(0, 0, 0, 0.35);
+
+    --radius: 18px;
+    --shadow: 0 26px 90px rgba(0, 0, 0, 0.45);
+
     --transition-speed: 0.6s;
     --cubic-ease: cubic-bezier(0.23, 1, 0.32, 1);
 }
@@ -18,37 +25,30 @@
     -webkit-font-smoothing: antialiased;
 }
 
-body, html {
+html, body {
     margin: 0;
     padding: 0;
     width: 100%;
     min-height: 100%;
-    background: 
-        radial-gradient(1px 1px at 10% 20%, white, transparent),
-        radial-gradient(1px 1px at 85% 15%, white, transparent),
-        radial-gradient(1px 1px at 30% 80%, white, transparent),
-        radial-gradient(1px 1px at 70% 60%, white, transparent),
-        radial-gradient(2px 2px at 50% 40%, white, transparent),
-        radial-gradient(1px 1px at 90% 85%, white, transparent),
-        radial-gradient(1px 1px at 20% 50%, white, transparent),
-        radial-gradient(1px 1px at 60% 10%, white, transparent),
-        radial-gradient(1px 1px at 40% 90%, white, transparent),
-        radial-gradient(2px 2px at 15% 70%, white, transparent),
-        radial-gradient(1px 1px at 75% 30%, white, transparent),
-        radial-gradient(1px 1px at 95% 50%, white, transparent),
-        radial-gradient(1px 1px at 25% 35%, white, transparent),
-        radial-gradient(1px 1px at 80% 75%, white, transparent),
-        radial-gradient(2px 2px at 45% 65%, white, transparent),
-        radial-gradient(1px 1px at 5% 45%, white, transparent),
-        radial-gradient(1px 1px at 65% 88%, white, transparent),
-        radial-gradient(1px 1px at 35% 12%, white, transparent),
-        radial-gradient(1px 1px at 88% 40%, white, transparent),
-        radial-gradient(1px 1px at 12% 95%, white, transparent),
+}
+
+body {
+    color: var(--white-pure);
+    font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    overflow-x: hidden;
+
+    /* More premium background: less “paint”, more depth */
+    background:
+        radial-gradient(1200px 700px at 50% -20%, rgba(47, 107, 255, 0.18), transparent 60%),
+        radial-gradient(900px 550px at 15% 5%, rgba(255, 255, 255, 0.06), transparent 70%),
+        radial-gradient(900px 550px at 85% 25%, rgba(255, 255, 255, 0.05), transparent 70%),
+        radial-gradient(1px 1px at 10% 20%, rgba(255,255,255,0.55), transparent),
+        radial-gradient(1px 1px at 85% 15%, rgba(255,255,255,0.55), transparent),
+        radial-gradient(1px 1px at 30% 80%, rgba(255,255,255,0.55), transparent),
+        radial-gradient(1px 1px at 70% 60%, rgba(255,255,255,0.55), transparent),
         #0a1f35;
     background-size: 100% 100%;
-    color: var(--white-pure);
-    font-family: 'Inter', sans-serif;
-    overflow-x: hidden;
+    background-attachment: fixed;
 }
 
 /* UNIFIED BACKGROUND - NO SEPARATE LAYER */
@@ -62,25 +62,21 @@ body, html {
     z-index: 1;
 }
 
-/* SCROLL ARCHITECTURE */
+/* ===========================
+   SCROLL ARCHITECTURE (TIGHT)
+   =========================== */
+
+/* Key: if this is too large, everything feels like “scrolling forever”. */
 .cinematic-gate {
-    height: 110vh;
+    height: 105vh; /* tighter than before */
     width: 100%;
     position: relative;
 }
 
-/* TIGHTER PACING PER SECTION (Apple-like: intentional, not endless) */
-.first-gate {
-    height: 125vh;
-}
-
-.text-gate {
-    height: 110vh;
-}
-
-.navigation-gate {
-    height: 105vh;
-}
+/* Per-section tuning */
+.first-gate { height: 112vh; }
+.text-gate { height: 105vh; }
+.navigation-gate { height: 102vh; } /* tighten the “two cards” section */
 
 .sticky-viewport {
     position: sticky;
@@ -93,7 +89,10 @@ body, html {
     overflow: hidden;
 }
 
-/* THE CUBE - CLEAN, NO MASK */
+/* ===========================
+   HERO
+   =========================== */
+
 .hero-image-wrapper {
     position: relative;
     width: 100vw;
@@ -101,101 +100,90 @@ body, html {
     display: flex;
     justify-content: center;
     align-items: center;
-    animation: cubeDeepDissolve linear forwards;
-    animation-timeline: view();
-    animation-range: exit 0% exit 100%;
 }
 
+/* cleaner, slightly smaller on desktop */
 .center-piece-cube {
-    width: 100%;
-    max-width: 800px;
+    width: min(86vw, 760px);
     height: auto;
     object-fit: contain;
     z-index: 2;
-    filter: drop-shadow(0 0 100px rgba(0, 200, 255, 0.5));
+    filter: drop-shadow(0 0 90px rgba(47, 107, 255, 0.35));
 }
 
 .atmospheric-overlay {
     display: none;
 }
 
-@keyframes cubeDeepDissolve {
-    to { 
-        opacity: 0; 
-        transform: scale(1.15) translateY(-50px); 
-        filter: blur(50px) brightness(0.2);
-    }
-}
+/* ===========================
+   TEXT / TYPOGRAPHY
+   =========================== */
 
-/* TEXT REVEAL STYLING */
 .statement-reveal-group {
     text-align: center;
-    max-width: 900px;
+    max-width: 980px;
     padding: 0 20px;
-    animation: textRevealFade linear forwards;
-    animation-timeline: view();
-    animation-range: entry 0% exit 100%;
 }
 
+/* small “established” tag */
 .institutional-tag {
-    font-size: 0.8rem;
-    letter-spacing: 0.5em;
+    font-size: 0.78rem;
+    letter-spacing: 0.45em;
     color: var(--cube-blue);
-    font-weight: 700;
+    font-weight: 800;
     display: block;
-    margin-bottom: 20px;
+    margin-bottom: 18px;
 }
 
 .main-announcement {
-    font-size: clamp(2.5rem, 10vw, 6rem);
+    font-size: clamp(2.4rem, 7vw, 5.4rem);
     font-weight: 900;
     margin: 0;
-    letter-spacing: -3px;
-    line-height: 0.9;
+    letter-spacing: -2px;
+    line-height: 0.95;
 }
 
 .announcement-divider {
-    width: 60px;
+    width: 64px;
     height: 4px;
     background: var(--white-pure);
-    margin: 40px auto;
+    margin: 34px auto;
+    opacity: 0.95;
 }
 
 .announcement-sub {
-    font-size: 1.3rem;
+    font-size: clamp(1.1rem, 1.2vw, 1.35rem);
     font-weight: 300;
-    max-width: 620px;
+    max-width: 720px;
     margin: 0 auto;
     color: var(--text-muted);
-    line-height: 1.6;
+    line-height: 1.7;
 }
 
-@keyframes textRevealFade {
-    0% { opacity: 0; transform: translateY(100px); filter: blur(20px); }
-    40%, 60% { opacity: 1; transform: translateY(0); filter: blur(0); }
-    100% { opacity: 0; transform: translateY(-100px); filter: blur(20px); }
-}
+/* ===========================
+   NAVIGATION HUB
+   =========================== */
 
-/* NAVIGATION HUB STYLING */
 .nav-hub-content {
     width: 100%;
-    max-width: 1000px;
-    padding: 0 40px;
+    max-width: 1040px;
+    padding: 0 clamp(18px, 4vw, 44px);
 }
 
 .nav-header {
     text-align: center;
     font-size: 0.9rem;
     text-transform: uppercase;
-    letter-spacing: 0.4em;
-    margin-bottom: 60px;
-    opacity: 0.6;
+    letter-spacing: 0.38em;
+    margin-bottom: 44px;
+    opacity: 0.65;
 }
 
+/* responsive grid automatically becomes 1 column on small screens */
 .institutional-nav {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 22px;
 }
 
 .mega-nav-btn {
@@ -203,42 +191,106 @@ body, html {
     flex-direction: column;
     text-decoration: none;
     color: white;
-    padding: 40px;
+    padding: clamp(22px, 3vw, 40px);
     border: 1px solid var(--border-soft);
-    background: var(--glass-bg);
-    backdrop-filter: blur(20px);
-    transition: all var(--transition-speed) var(--cubic-ease);
+    border-radius: var(--radius);
+    background: rgba(0, 0, 0, 0.28);
+    backdrop-filter: blur(16px);
+    box-shadow: var(--shadow);
+    transition: transform var(--transition-speed) var(--cubic-ease),
+                background var(--transition-speed) var(--cubic-ease),
+                color var(--transition-speed) var(--cubic-ease),
+                border-color var(--transition-speed) var(--cubic-ease);
 }
 
 .mega-nav-btn:hover {
-    background: var(--white-pure);
+    background: rgba(255, 255, 255, 0.92);
     color: var(--black-base);
     transform: translateY(-10px);
-    border-color: var(--white-pure);
+    border-color: rgba(255, 255, 255, 0.85);
 }
 
 .btn-number {
     font-size: 0.8rem;
     font-weight: 900;
-    margin-bottom: 20px;
-    opacity: 0.4;
+    margin-bottom: 16px;
+    opacity: 0.45;
 }
 
 .btn-text {
-    font-size: 2rem;
-    font-weight: 700;
+    font-size: clamp(1.35rem, 1.8vw, 2.05rem);
+    font-weight: 800;
     text-transform: uppercase;
     margin-bottom: 10px;
+    letter-spacing: 0.02em;
 }
 
 .btn-desc {
-    font-size: 0.9rem;
-    opacity: 0.6;
+    font-size: 0.95rem;
+    opacity: 0.65;
 }
 
-/* FOOTER ARCHITECTURE */
+/* ===========================
+   SUBPAGES (Mission / Timeline)
+   =========================== */
+
+/* Return link */
+.return-link {
+    color: white;
+    text-decoration: none;
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    padding-bottom: 10px;
+    display: inline-block;
+    transition: all 0.3s ease;
+    opacity: 0.9;
+}
+
+.return-link:hover {
+    border-bottom-color: var(--cube-blue);
+    color: var(--cube-blue);
+}
+
+/* The “black box” card — now truly responsive */
+.mission-statement-card {
+    width: min(92vw, 920px);
+    margin: 0 auto;
+    background: rgba(0,0,0,0.42);
+    backdrop-filter: blur(18px);
+    padding: clamp(26px, 4.2vw, 68px);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+
+    /* Bigger, business-grade readability */
+    font-size: clamp(1.05rem, 1.05vw, 1.2rem);
+    line-height: 1.85;
+    color: rgba(255, 255, 255, 0.86);
+}
+
+.mission-statement-card p {
+    margin: 0 0 18px;
+}
+.mission-statement-card p:last-child {
+    margin-bottom: 0;
+}
+
+/* Headings used on subpages */
+.subpage-title,
+.main-heading {
+    font-size: clamp(2.2rem, 4.8vw, 4rem);
+    font-weight: 900;
+    letter-spacing: -1.6px;
+    margin: 34px 0 34px 0;
+}
+
+/* ===========================
+   FOOTER (Real Footer)
+   =========================== */
+
 .system-footer {
-    padding: 60px 40px;
+    padding: clamp(22px, 3.2vw, 60px) clamp(18px, 4vw, 44px);
     border-top: 1px solid var(--border-soft);
     position: relative;
     z-index: 10;
@@ -249,160 +301,28 @@ body, html {
 .footer-inner {
     display: flex;
     justify-content: space-between;
-    font-size: 0.7rem;
-    letter-spacing: 0.2em;
-    opacity: 0.4;
-}
-
-/* FINAL FOOTER GATE
-   The cinematic layout uses 200vh gates by default.
-   The footer should be a true end-cap so you cannot scroll past it.
-*/
-.footer-gate {
-    height: 100vh;
-}
-
-.footer-gate .sticky-viewport {
-    align-items: flex-end;
+    gap: 18px;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    opacity: 0.55;
+    flex-wrap: wrap;
 }
 
 /* ===========================
-   SUBPAGE STYLES
+   RESPONSIVE ADJUSTMENTS
    =========================== */
 
-.subpage-content-wrapper { 
-    padding: 100px 50px; 
-    display: flex; 
-    flex-direction: column; 
-    min-height: 100vh;
-    position: relative;
-    z-index: 1;
-}
-
-.subpage-header {
-    margin-bottom: 60px;
-}
-
-.back-link { 
-    color: white; 
-    text-decoration: none; 
-    font-size: 0.7rem; 
-    letter-spacing: 0.2em; 
-    border-bottom: 1px solid rgba(255,255,255,0.2); 
-    padding-bottom: 10px;
-    display: inline-block;
-    transition: all 0.3s ease;
-}
-
-.back-link:hover {
-    border-bottom-color: var(--cube-blue);
-    color: var(--cube-blue);
-}
-
-.subpage-body { 
-    flex-grow: 1; 
-    display: flex; 
-    align-items: center; 
-    justify-content: center; 
-}
-
-.mission-statement-card { 
-    max-width: 800px; 
-    background: rgba(0,0,0,0.5); 
-    backdrop-filter: blur(20px); 
-    padding: 80px; 
-    border: 1px solid rgba(255,255,255,0.1);
-    font-size: 1.15rem;
-    line-height: 1.85;
-    color: rgba(255, 255, 255, 0.82);
-}
-
-.mission-statement-card p {
-    margin: 0 0 18px;
-}
-
-.mission-statement-card p:last-child {
-    margin-bottom: 0;
-}
-
-.protocol-id { 
-    color: #0033ff; 
-    font-weight: 800; 
-    font-size: 0.8rem; 
-    letter-spacing: 0.3em; 
-    margin-bottom: 30px; 
-    display: block; 
-}
-
-.subpage-title { 
-    font-size: 4rem; 
-    margin: 0 0 40px 0; 
-    font-weight: 900; 
-    letter-spacing: -2px; 
-}
-
-.text-block p { 
-    font-size: 1.4rem; 
-    line-height: 1.8; 
-    opacity: 0.8; 
-    margin-bottom: 30px; 
-}
-
-/* TIMELINE PAGE SPECIFIC */
-.subpage-wrapper {
-    position: relative;
-    z-index: 1;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 100px 50px;
-}
-
-.subpage-container {
-    max-width: 900px;
-    width: 100%;
-    background: rgba(0,0,0,0.5);
-    backdrop-filter: blur(20px);
-    padding: 80px;
-    border: 1px solid rgba(255,255,255,0.1);
-}
-
-.main-heading {
-    font-size: 4rem;
-    font-weight: 900;
-    letter-spacing: -2px;
-    margin: 40px 0 60px 0;
-}
-
-.subpage-container h3 {
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: var(--cube-blue);
-    margin-bottom: 15px;
-    letter-spacing: 0.1em;
-}
-
-.subpage-container p {
-    font-size: 1.2rem;
-    line-height: 1.8;
-    opacity: 0.8;
-    margin-bottom: 40px;
-}
-
-/* RESPONSIVE ADJUSTMENTS */
 @media (max-width: 768px) {
-    .institutional-nav {
-        grid-template-columns: 1fr;
-    }
-    
-    .mission-statement-card,
-    .subpage-container {
-        padding: 40px;
-    }
-    
-    .subpage-title,
-    .main-heading {
-        font-size: 2.5rem;
-    }
+    .announcement-divider { margin: 26px auto; }
+
+    /* Reduce gate heights slightly on mobile so it feels faster */
+    .cinematic-gate { height: 102vh; }
+    .first-gate { height: 108vh; }
+    .navigation-gate { height: 102vh; }
+
+    /* Make nav buttons feel less huge on mobile */
+    .mega-nav-btn { box-shadow: 0 18px 60px rgba(0,0,0,0.42); }
+
+    /* Footer stacks naturally */
+    .footer-inner { opacity: 0.6; }
 }
