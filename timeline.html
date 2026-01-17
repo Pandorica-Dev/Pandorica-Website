@@ -25,31 +25,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./src/style.css">
-
-    <!-- Hard override: keep footer pinned to bottom no matter what style.css does -->
-    <style>
-        body { padding-bottom: 140px !important; }
-
-        .system-footer {
-            position: fixed !important;
-            inset: auto 0 0 0 !important;
-            top: auto !important;
-            bottom: 0 !important;
-            transform: none !important;
-            z-index: 99999 !important;
-            pointer-events: auto !important;
-        }
-
-        .system-footer * {
-            transform: none !important;
-        }
-    </style>
 </head>
 <body>
 
     <div class="fixed-environment-layer"></div>
 
     <main class="master-scroll-container">
+
         <section class="cinematic-gate text-gate">
             <div class="sticky-viewport">
                 <div class="nav-hub-content">
@@ -57,6 +39,7 @@
                     <a href="index.html" class="return-link">← RETURN TO SYSTEM HOME</a>
 
                     <h1 class="nav-header" style="margin-top: 28px;">Upcoming Releases</h1>
+
                     <div class="announcement-divider" style="margin: 24px 0 18px;"></div>
 
                     <p class="announcement-sub" style="max-width: 920px; margin: 0 auto 26px;">
@@ -87,18 +70,24 @@
                 </div>
             </div>
         </section>
-    </main>
 
-    <footer class="system-footer">
-        <div class="footer-inner">
-            <div class="footer-col">
-                <p class="copyright">&copy; 2025 PANDORICA TECHNOLOGIES</p>
+        <!-- FOOTER AS FINAL GATE (prevents overlap + prevents scrolling past it) -->
+        <section class="cinematic-gate footer-gate">
+            <div class="sticky-viewport" style="display:flex; align-items:flex-end;">
+                <footer class="system-footer" style="width:100%;">
+                    <div class="footer-inner">
+                        <div class="footer-col">
+                            <p class="copyright">&copy; 2025 PANDORICA TECHNOLOGIES</p>
+                        </div>
+                        <div class="footer-col">
+                            <p class="status-tag">SYSTEM STATUS: DEVELOPMENT IN PROGRESS</p>
+                        </div>
+                    </div>
+                </footer>
             </div>
-            <div class="footer-col">
-                <p class="status-tag">SYSTEM STATUS: DEVELOPMENT IN PROGRESS</p>
-            </div>
-        </div>
-    </footer>
+        </section>
+
+    </main>
 
 </body>
 </html>
