@@ -26,15 +26,22 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./src/style.css">
 
+    <!-- Hard override: keep footer pinned to bottom no matter what style.css does -->
     <style>
-        body { padding-bottom: 120px; }
+        body { padding-bottom: 140px !important; }
 
         .system-footer {
-            position: fixed;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            z-index: 9999;
+            position: fixed !important;
+            inset: auto 0 0 0 !important;
+            top: auto !important;
+            bottom: 0 !important;
+            transform: none !important;
+            z-index: 99999 !important;
+            pointer-events: auto !important;
+        }
+
+        .system-footer * {
+            transform: none !important;
         }
     </style>
 </head>
@@ -43,7 +50,6 @@
     <div class="fixed-environment-layer"></div>
 
     <main class="master-scroll-container">
-
         <section class="cinematic-gate text-gate">
             <div class="sticky-viewport">
                 <div class="nav-hub-content">
@@ -51,7 +57,6 @@
                     <a href="index.html" class="return-link">← RETURN TO SYSTEM HOME</a>
 
                     <h1 class="nav-header" style="margin-top: 28px;">Upcoming Releases</h1>
-
                     <div class="announcement-divider" style="margin: 24px 0 18px;"></div>
 
                     <p class="announcement-sub" style="max-width: 920px; margin: 0 auto 26px;">
@@ -82,10 +87,8 @@
                 </div>
             </div>
         </section>
-
     </main>
 
-    <!-- FOOTER MOVED OUTSIDE MAIN (critical fix) -->
     <footer class="system-footer">
         <div class="footer-inner">
             <div class="footer-col">
