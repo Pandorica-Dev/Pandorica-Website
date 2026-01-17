@@ -64,22 +64,22 @@ body, html {
 
 /* SCROLL ARCHITECTURE */
 .cinematic-gate {
-    height: 115vh;
+    height: 110vh;
     width: 100%;
     position: relative;
 }
 
 /* TIGHTER PACING PER SECTION (Apple-like: intentional, not endless) */
 .first-gate {
-    height: 130vh;
+    height: 125vh;
 }
 
 .text-gate {
-    height: 115vh;
+    height: 110vh;
 }
 
 .navigation-gate {
-    height: 115vh;
+    height: 105vh;
 }
 
 .sticky-viewport {
@@ -162,9 +162,9 @@ body, html {
 }
 
 .announcement-sub {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     font-weight: 300;
-    max-width: 500px;
+    max-width: 620px;
     margin: 0 auto;
     color: var(--text-muted);
     line-height: 1.6;
@@ -312,6 +312,17 @@ body, html {
     backdrop-filter: blur(20px); 
     padding: 80px; 
     border: 1px solid rgba(255,255,255,0.1);
+    font-size: 1.15rem;
+    line-height: 1.85;
+    color: rgba(255, 255, 255, 0.82);
+}
+
+.mission-statement-card p {
+    margin: 0 0 18px;
+}
+
+.mission-statement-card p:last-child {
+    margin-bottom: 0;
 }
 
 .protocol-id { 
