@@ -2,15 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Primary SEO -->
     <title>Pandorica Technologies | Our Mission</title>
     <meta name="description" content="Why Pandorica Technologies exists: to build thoughtful, reliable technology with safety, security, privacy, and ease of use as non-negotiable priorities.">
     <link rel="canonical" href="https://pandorica.org/mission.html">
 
-    <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Pandorica Technologies">
     <meta property="og:title" content="Our Mission | Pandorica Technologies">
@@ -19,30 +16,27 @@
     <meta property="og:image" content="https://pandorica.org/logo.png">
     <meta property="og:image:alt" content="Pandorica Technologies logo">
 
-    <!-- Twitter / X -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Our Mission | Pandorica Technologies">
     <meta name="twitter:description" content="Thoughtful, reliable technology built with safety, security, privacy, and ease of use as non-negotiable priorities.">
     <meta name="twitter:image" content="https://pandorica.org/logo.png">
 
-    <!-- Fonts / CSS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./src/style.css">
 
-    <!-- Footer fix -->
     <style>
+        /* Make room for the fixed footer */
+        body { padding-bottom: 120px; }
+
+        /* Footer must be outside transformed containers, then fixed works */
         .system-footer {
             position: fixed;
             left: 0;
             right: 0;
             bottom: 0;
-            z-index: 50;
-        }
-
-        .master-scroll-container {
-            padding-bottom: 140px;
+            z-index: 9999;
         }
     </style>
 </head>
@@ -88,18 +82,19 @@
             </div>
         </section>
 
-        <footer class="system-footer">
-            <div class="footer-inner">
-                <div class="footer-col">
-                    <p class="copyright">&copy; 2025 PANDORICA TECHNOLOGIES</p>
-                </div>
-                <div class="footer-col">
-                    <p class="status-tag">SYSTEM STATUS: DEVELOPMENT IN PROGRESS</p>
-                </div>
-            </div>
-        </footer>
-
     </main>
+
+    <!-- FOOTER MOVED OUTSIDE MAIN (critical fix) -->
+    <footer class="system-footer">
+        <div class="footer-inner">
+            <div class="footer-col">
+                <p class="copyright">&copy; 2025 PANDORICA TECHNOLOGIES</p>
+            </div>
+            <div class="footer-col">
+                <p class="status-tag">SYSTEM STATUS: DEVELOPMENT IN PROGRESS</p>
+            </div>
+        </div>
+    </footer>
 
 </body>
 </html>
