@@ -42,10 +42,14 @@ body {
         radial-gradient(1200px 700px at 50% -20%, rgba(47, 107, 255, 0.12), transparent 62%),
         radial-gradient(900px 550px at 15% 5%, rgba(255, 255, 255, 0.035), transparent 72%),
         radial-gradient(900px 550px at 85% 25%, rgba(255, 255, 255, 0.03), transparent 72%),
-        radial-gradient(1px 1px at 10% 20%, rgba(255,255,255,0.45), transparent),
-        radial-gradient(1px 1px at 85% 15%, rgba(255,255,255,0.45), transparent),
-        radial-gradient(1px 1px at 30% 80%, rgba(255,255,255,0.45), transparent),
-        radial-gradient(1px 1px at 70% 60%, rgba(255,255,255,0.45), transparent),
+        radial-gradient(1px 1px at 10% 20%, rgba(255,255,255,0.60), transparent),
+        radial-gradient(1px 1px at 85% 15%, rgba(255,255,255,0.60), transparent),
+        radial-gradient(1px 1px at 30% 80%, rgba(255,255,255,0.60), transparent),
+        radial-gradient(1px 1px at 70% 60%, rgba(255,255,255,0.60), transparent),
+        radial-gradient(1px 1px at 20% 45%, rgba(255,255,255,0.55), transparent),
+        radial-gradient(1px 1px at 60% 12%, rgba(255,255,255,0.55), transparent),
+        radial-gradient(1px 1px at 92% 55%, rgba(255,255,255,0.55), transparent),
+        radial-gradient(1px 1px at 40% 92%, rgba(255,255,255,0.55), transparent),
         #0a1f35;
     background-size: 100% 100%;
     background-attachment: fixed;
@@ -245,11 +249,35 @@ body {
     display: inline-block;
     transition: all 0.3s ease;
     opacity: 0.9;
+    position: sticky;
+    top: calc(env(safe-area-inset-top, 0px) + 10px);
+    z-index: 50;
+    padding-top: 8px;
+    background: rgba(0,0,0,0.18);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    padding-left: 12px;
+    padding-right: 12px;
 }
 
 .return-link:hover {
     border-bottom-color: var(--cube-blue);
     color: var(--cube-blue);
+}
+
+/* Subpages: allow vertical scrolling inside the sticky viewport on short windows,
+   so the Return link never becomes unclickable/clipped. */
+body.subpage .sticky-viewport {
+    overflow-y: auto;
+    overflow-x: hidden;
+    align-items: flex-start;
+    padding-top: clamp(16px, 3vh, 44px);
+    padding-bottom: clamp(16px, 3vh, 44px);
+}
+
+/* Ensure content fills width while scrolling */
+body.subpage .nav-hub-content {
+    width: 100%;
 }
 
 /* The “black box” card — now truly responsive */
